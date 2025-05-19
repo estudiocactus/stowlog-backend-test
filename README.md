@@ -1,250 +1,59 @@
-# Stowlog API - Backend Developer Technical Test
-
-## Introduction
-
-Welcome to the Stowlog API technical test. This test is designed to evaluate your skills as a backend developer, specifically your proficiency with NestJS, TypeScript, MongoDB, and RESTful API design principles. Instead of modifying an existing codebase, you'll be building a simplified version of our API from scratch and deploying it to a cloud platform.
-
-
-
-## Overview of Stowlog
-
-Stowlog is a safety and compliance management system that helps organizations digitize their HSSE (Health, Safety, Security, and Environment) procedures. The platform includes features for managing safety inductions, visit appointments, permits to work, and more.
-
-
-
-## Technical Test Requirements
-
-### Technology Stack
-
-You must use the following technologies:
-
-- **Backend Framework**: NestJS
-- **Database**: MongoDB
-- **Authentication**: JWT
-- **Documentation**: Swagger
-- **Deployment**: Render (or similar platform of your choice, Fly.io, Railway...)
-
-### Core Features to Implement
-
-You are required to build a simplified version of the Stowlog API with the following modules:
-
-#### 1. User Module
-
-- User registration and authentication (JWT)
-- User roles (Admin, Manager, Worker)
-- User profile management
-
-#### 2. Suspensions Module
-
-- Create, read, update, delete (CRUD) operations for user suspensions
-- Suspension history tracking
-- Search functionality with filtering and pagination
-- Email notification system when a user is suspended
-
-#### 3. Facilities Module
-
-- CRUD operations for facilities
-- Assign users to facilities
-- Facility member management
-
-### Technical Requirements
-
-1. **Architecture**
-   - Follow NestJS best practices for module organization
-   - Implement proper separation of concerns
-   - Use dependency injection effectively
-
-2. **API Design**
-   - RESTful API endpoints
-   - Proper request validation using DTOs and class-validator
-   - Comprehensive error handling
-   - Pagination for list endpoints
-
-3. **Database**
-   - MongoDB schemas using Mongoose
-   - Proper indexing for performance
-   - Data validation at the schema level
-
-4. **Authentication & Authorization**
-   - JWT-based authentication
-   - Role-based access control
-   - Protect routes based on user roles
-
-5. **Documentation**
-   - API documentation using Swagger
-   - README with setup instructions
-   - Code comments where necessary
-
-6. **Testing**
-   - Unit tests for services
-   - Integration tests for controllers
-   - Minimum 70% test coverage
-
-7. **Deployment**
-   - Deploy the application to Render (or similar platform)
-   - Provide deployment instructions
-   - Ensure the API is accessible online
-
-### Bonus Points
-
-- Implement caching for frequently accessed data
-- Add logging middleware
-- Implement rate limiting
-- Set up CI/CD pipeline
-- Add email verification for user registration
-
-
-
-## Evaluation Criteria
-
-Your submission will be evaluated based on:
-
-1. **Code Quality (30%)**
-   - Clean, readable, and well-organized code
-   - Proper error handling
-   - Following NestJS best practices
-
-2. **Architecture (25%)**
-   - Proper separation of concerns
-   - Effective use of NestJS modules, services, and controllers
-   - Appropriate use of dependency injection
-
-3. **Functionality (25%)**
-   - All requirements are implemented correctly
-   - Edge cases are handled properly
-   - Performance considerations
-
-4. **Testing & Documentation (20%)**
-   - Comprehensive tests
-   - Clear API documentation
-   - Well-documented code and README
-
-
-
-## Submission Guidelines
-
-1. Create a new GitHub repository for your project
-2. Implement the required features
-3. Deploy the application to Render (or similar platform)
-4. Submit the following:
-   - GitHub repository URL
-   - Deployed application URL
-   - README with:
-     - Setup instructions
-     - API documentation or Swagger URL
-     - Brief explanation of your implementation
-     - Any assumptions or design decisions you made
-     - How you would improve the code further given more time
-
-
-
-## Time Limit
-
-You have 7 days to complete this test. Quality is more important than completing all requirements, so focus on delivering well-implemented features rather than rushing through all requirements.
-
-
-
-## Database Setup
-
-For the MongoDB database, we recommend using MongoDB Atlas's free tier:
-
-1. Create a free MongoDB Atlas account at [https://www.mongodb.com/cloud/atlas](https://www.mongodb.com/cloud/atlas)
-2. Set up a free M0 cluster
-3. Configure network access to allow connections from anywhere (for simplicity in this test)
-4. Create a database user
-5. Use the connection string in your NestJS application's environment variables
-
-This approach will ensure your application can be properly deployed to Render while maintaining database persistence.
-
-
-
-## Email Notification Implementation
-
-For this test, you should implement a simulated email service. Your implementation should:
-
-- Log email details to the console (recipient, subject, content)
-- Mark suspensions as having been notified after the "email" is sent
-- Handle potential failures in the email sending process
-- Be implemented as a separate service that follows NestJS best practices
-
-You do NOT need to integrate with an actual email service provider for this test.
-
-
-
-## Entity Relationship Diagram Example
-
-[Open Diagram](https://www.mermaidchart.com/raw/bf561c6c-025d-4e87-a769-95fdc2bd9883?theme=light&version=v0.1&format=svg)
-
-
-
-## Postman Collection Example
-
-[Open Collection](https://.postman.co/workspace/My-Workspace~eb85a56d-6af4-424f-848a-7847304014b5/collection/9964216-bcf28ca4-0bc5-43f4-840f-ef64e04fe72f?action=share&creator=9964216)
-
-
-
-## Project Structure Example
-
-Here's a recommended project structure to help you get started:
-
-stowlog-api/
-├── src/
-│   ├── common/
-│   │   ├── decorators/
-│   │   ├── filters/
-│   │   ├── guards/
-│   │   ├── interceptors/
-│   │   └── utils/
-│   ├── config/
-│   │   ├── configuration.ts
-│   │   └── validation.ts
-│   ├── modules/
-│   │   ├── auth/
-│   │   │   ├── dto/
-│   │   │   ├── guards/
-│   │   │   ├── strategies/
-│   │   │   ├── auth.controller.ts
-│   │   │   ├── auth.module.ts
-│   │   │   └── auth.service.ts
-│   │   ├── users/
-│   │   │   ├── dto/
-│   │   │   ├── entities/
-│   │   │   ├── users.controller.ts
-│   │   │   ├── users.module.ts
-│   │   │   └── users.service.ts
-│   │   ├── suspensions/
-│   │   │   ├── dto/
-│   │   │   ├── entities/
-│   │   │   ├── suspensions.controller.ts
-│   │   │   ├── suspensions.module.ts
-│   │   │   └── suspensions.service.ts
-│   │   └── facilities/
-│   │       ├── dto/
-│   │       ├── entities/
-│   │       ├── facilities.controller.ts
-│   │       ├── facilities.module.ts
-│   │       └── facilities.service.ts
-│   ├── app.module.ts
-│   └── main.ts
-├── test/
-│   ├── app.e2e-spec.ts
-│   └── jest-e2e.json
-├── .env.example
-├── .gitignore
-├── nest-cli.json
-├── package.json
-├── README.md
-├── tsconfig.build.json
-└── tsconfig.json
-
-
-
-## Resources
-
-- [NestJS Documentation](https://docs.nestjs.com/)
-- [MongoDB Documentation](https://docs.mongodb.com/)
-- [Render Documentation](https://render.com/docs)
-- [JWT Authentication in NestJS](https://docs.nestjs.com/security/authentication)
-- [Swagger in NestJS](https://docs.nestjs.com/openapi/introduction)
-
-Good luck! We're looking forward to seeing your solution.
+# Prueba Técnica Backend - Sistema de Gestión de Tareas
+## Descripción
+Esta prueba técnica está diseñada para evaluar tus habilidades en desarrollo backend. La tarea consiste en construir un sistema de gestión de tareas con notificaciones, utilizando patrones de diseño clave como **Repository**, **Factory**, y **Strategy**, si crees que es preciso implementar cualquier otro tipo de patrón, adelante. El sistema debe permitir a los usuarios crear, actualizar y eliminar tareas, y notificar a los usuarios sobre eventos importantes relacionados con las tareas.
+### Duración estimada: 3-4 días
+## Requisitos
+### Funcionalidad
+1. **Gestión de Tareas**
+   - Los usuarios deben poder crear, actualizar y eliminar tareas (CRUD).
+   - Cada tarea tendrá los siguientes campos:
+     - `id`: Identificador único.
+     - `title`: Título de la tarea.
+     - `description`: Descripción de la tarea.
+     - `createdAt`: Fecha de creación.
+     - `updatedAt`: Fecha de última actualización.
+     - `completed`: Booleano que indica si la tarea está completada.
+Las tareas no deben ser eliminadas por completo, si no que se debe de utilizar una técnica de **soft delete**.
+2. **Notificaciones**
+   - El sistema debe enviar una notificación cuando:
+     - Se cree una nueva tarea.
+     - Se actualice el estado de una tarea (por ejemplo, marcarla como completada).
+   - Las notificaciones pueden ser simuladas mediante logs en consola o como un correo electrónico simulado.
+3. **Eventos**
+   - Debes implementar un sistema de eventos que maneje los cambios en el estado de las tareas. Por ejemplo:
+     - Cuando se cree una tarea, se emite un evento de creación de tarea.
+     - Cuando se actualice una tarea, se emite un evento de actualización de tarea.
+   - Los eventos deben estar desacoplados de la lógica principal de negocio.
+4. **Patrón Strategy**
+   - Implementa el **Patrón Strategy** para la gestión de las notificaciones. Dependiendo del tipo de evento, las notificaciones deben comportarse de manera diferente. Por ejemplo:
+     - Para una nueva tarea, la notificación se enviará por correo electrónico.
+     - Para una actualización de tarea, la notificación se enviará como un mensaje interno.
+   - Crea una interfaz `NotificationStrategy` con implementaciones como `EmailNotificationStrategy` e `InternalMessageNotificationStrategy`.
+### [Patrones de Diseño](https://refactoring.guru/design-patterns/typescript)
+1. [**Repository Pattern**](https://medium.com/@pererikbergman/repository-design-pattern-e28c0f3e4a30):
+   - Implementa un repositorio para las tareas que maneje la persistencia de datos.
+   - Los métodos básicos del repositorio deben incluir `create`, `update`, `delete`, y `findById`.
+2. [**Factory Pattern**](https://refactoring.guru/design-patterns/factory-method):
+   - Crea una factoría que se encargue de la creación de tareas, centralizando la creación y facilitando futuras modificaciones o validaciones adicionales.
+3. [**Strategy Pattern**](https://refactoring.guru/design-patterns/strategy):
+   - Implementa este patrón para cambiar dinámicamente el comportamiento de las notificaciones según el tipo de evento (creación, actualización, etc.).
+## Requisitos Técnicos
+- **Tecnologías recomendadas**:
+  - Node.js con Express.js o NestJS (elige la que prefieras).
+  - Si decides utilizar una base de datos, puedes usar Mongoose para MongoDB o TypeORM para bases de datos SQL.
+  - Las notificaciones pueden ser simuladas con logs en consola o utilizando una librería para enviar correos electrónicos (como `nodemailer`).
+  - Utiliza **Jest** o cualquier otra herramienta de pruebas para asegurarte de que tu código funciona correctamente.
+## Evaluación
+- **Calidad del Código**: La claridad, organización y calidad de la implementación, así como el uso de los patrones de diseño.
+- **Uso Correcto de los Patrones**: La correcta implementación de los patrones de diseño **Repository**, **Factory**, y **Strategy**.
+- **Pruebas**: La cobertura de las pruebas unitarias y de integración, y la efectividad de las mismas.
+- **Funcionalidad**: Verificación de que el sistema de eventos, las notificaciones y el patrón Strategy funcionan correctamente y de manera coherente.
+## Entregables
+- Código fuente del proyecto.
+- Pruebas unitarias.
+- Documentación básica sobre cómo ejecutar el proyecto y la estructura del código.
+## Instrucciones para Enviar la Prueba
+1. Subir el código a un repositorio en GitHub, GitLab o cualquier otra plataforma similar.
+2. Incluir un archivo `README.md` con instrucciones claras para la ejecución del proyecto, cualquier configuración adicional y detalles relevantes.
+3. Enviar el enlace del repositorio al correo electrónico indicado.
+¡Buena suerte y esperamos ver tu solución!
