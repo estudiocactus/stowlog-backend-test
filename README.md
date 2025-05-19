@@ -50,7 +50,7 @@ Esta prueba técnica está diseñada para evaluar tus habilidades en desarrollo 
   - Si decides utilizar una base de datos, puedes usar Mongoose para MongoDB o TypeORM para bases de datos SQL.
   - Las notificaciones pueden ser simuladas con logs en consola o utilizando una librería para enviar correos electrónicos (como `nodemailer`).
   - Utiliza **JWT** para la autenticación de usuarios y la gestión de sesiones.
-  - Utiliza la librería de [gestión de eventos}(https://docs.nestjs.com/techniques/events) de nestjs
+  - Utiliza la librería de [gestión de eventos](https://docs.nestjs.com/techniques/events) de nestjs
   - Utiliza **Jest** o cualquier otra herramienta de pruebas para asegurarte de que tu código funciona correctamente.
 ## Evaluación
 - **Calidad del Código**: La claridad, organización y calidad de la implementación, así como el uso de los patrones de diseño.
